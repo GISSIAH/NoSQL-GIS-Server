@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const geoFtSchema = new Schema({
+const geoPointSchema = new Schema({
     type:{
         default:"Point",
         type:String
     },
-    coordinate:{
+    coordinates:{
         type:[Number],
-        index:"2dsphere"
-    }
+        index:true
+    } 
 });
 
-const FtSchema = new Schema({
+const PointSchema = new Schema({
     Layername:{
         type:String,
         required:[true,'Name Field is Required']
@@ -22,13 +22,64 @@ const FtSchema = new Schema({
         type:String,
         required:[true,'name of point is needed']
     },
-    geometry:geoFtSchema
+    geometry:geoPointSchema
 
 });
 
 
 
-const ft =mongoose.model('Features',FtSchema);
+const geoLineSchema = new Schema({
+    type:{
+        default:'LineString',
+        type:String
+    },
+    coordinates:{
+        type:Array,
+    index:true
+    }
+});
+
+const LineSchema = new Schema({
+    Layername:{
+        type:String,
+        required:[true,'Name Field is Required']
+    }, 
+    name:{
+        type:String,
+        required:[true,'name of point is needed']
+    },
+    geometry:geoLineSchema
+
+});
+
+const geoPolygonSchema = new Schema({
+    type:{
+        default:'LineString',
+        type:String
+    },
+    coordinates:{type:Array,
+        index:true}
+});
+
+const PolygonSchema = new Schema({
+    Layername:{
+        type:String,
+        required:[true,'Name Field is Required']
+    }, 
+    name:{
+        type:String,
+        required:[true,'name of point is needed']
+    },
+    geometry:geoPolygonSchema
+
+});
 
 
-module.exports = ft;
+const pt =mongoose.model('Points',PointSchema);
+const ln =mongoose.model('Lines',LineSchema);
+const ply =mongoose.model('Polygons',PolygonSchema);
+
+
+
+
+module.exports = {pt,ln,ply};
