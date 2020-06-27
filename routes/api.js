@@ -1,5 +1,5 @@
 const api = require('express').Router();
-const pt = require('../models/models.js');
+const {pt} = require('../models/models.js');
   
 api.get('/all',(req,res,next)=>{
     console.log('This is ALL');
