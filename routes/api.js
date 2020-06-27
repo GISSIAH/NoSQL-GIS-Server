@@ -15,6 +15,12 @@ api.get('/all/:layer',(req,res,next)=>{
     });
 });
 
+api.get('/all/:name',(req,res,next)=>{
+    pt.find({name:req.params.name}).then((pt)=>{
+        res.send(pt);
+    });
+});
+
 
 
 module.exports= api;
