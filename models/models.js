@@ -22,6 +22,11 @@ const PointSchema = new Schema({
         type:String,
         required:[true,'name of point is needed']
     },
+    type:{
+        type:String,
+        default:'Feature'
+    },
+    properties:Object,
     geometry:geoPointSchema
 
 });
@@ -48,13 +53,18 @@ const LineSchema = new Schema({
         type:String,
         required:[true,'name of point is needed']
     },
+    type:{
+        type:String,
+        default:'Feature'
+    },
+    properties:Object,
     geometry:geoLineSchema
 
 });
 
 const geoPolygonSchema = new Schema({
     type:{
-        default:'LineString',
+        default:'MultiPolygon',
         type:String
     },
     coordinates:{type:Array,
@@ -70,16 +80,18 @@ const PolygonSchema = new Schema({
         type:String,
         required:[true,'name of point is needed']
     },
+    type:{
+        type:String,
+        default:'Feature'
+    },
+    properties:Object,
     geometry:geoPolygonSchema
 
 });
 
-
 const pt =mongoose.model('Points',PointSchema);
 const ln =mongoose.model('Lines',LineSchema);
 const ply =mongoose.model('Polygons',PolygonSchema);
-
-
 
 
 module.exports = {pt,ln,ply};
