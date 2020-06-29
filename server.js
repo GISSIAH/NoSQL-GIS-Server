@@ -10,14 +10,16 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+//Initiates mongodb 
 mongoose.connect('mongodb://localhost:27017/Geo',{useNewUrlParser:true,useUnifiedTopology: true ,useFindAndModify:false});
 mongoose.Promise = global.Promise;
 
-
+//whole lotta middle ware and controllers
 app.use(bodyParser.json());
 app.use('/pnt',api);
 app.use('/ln',ln);
 app.use('/ply',ply); 
+
 app.use(function(err,req,res,next){
     
     res.status(422).send({error:err.message});
