@@ -38,13 +38,10 @@ api.get('/all/:name',(req,res,next)=>{
 });
 
 api.post('/entry',(req,res,next)=>{
-    ply.create(req.body).
-        then(function(poly){
-            res.send(poly);
-    }).catch(next)
-    
-})
-
+    ply.insertMany(req.body.features).then((fts)=>{
+        res.send(fts);
+    }).catch(next);
+});
  
 
 
