@@ -40,11 +40,10 @@ api.get('/all/:name',(req,res,next)=>{
 
 
 api.post('/entry',(req,res,next)=>{
-    pt.create(req.body).
-        then(function(pnt){
-            res.send(pnt);
-    }).catch(next)
-})
+    pt.insertMany(req.body.features).then((fts)=>{
+        res.send(fts);
+    }).catch(next);
+});
 
 
 
