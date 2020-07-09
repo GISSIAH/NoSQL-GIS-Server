@@ -1,4 +1,6 @@
 const express = require('express');
+
+const cors = require('cors');
 const api = require('./routes/api.js');
 const ln = require('./routes/lines.js');
 const  ply = require('./routes/polygons.js');
@@ -15,6 +17,7 @@ mongoose.connect('mongodb://localhost:27017/Geo',{useNewUrlParser:true,useUnifie
 mongoose.Promise = global.Promise;
 
 //whole lotta middle ware and controllers
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/pnt',api);
 app.use('/ln',ln);
