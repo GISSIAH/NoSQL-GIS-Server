@@ -17,10 +17,6 @@ const PointSchema = new Schema({
     Layername:{
         type:String,
         required:[true,'Name Field is Required']
-    }, 
-    name:{
-        type:String,
-        required:[true,'name of point is needed']
     },
     type:{
         type:String,
@@ -49,10 +45,7 @@ const LineSchema = new Schema({
         type:String,
         required:[true,'Name Field is Required']
     }, 
-    name:{
-        type:String,
-        required:[true,'name of point is needed']
-    },
+    
     type:{
         type:String,
         default:'Feature'
@@ -75,10 +68,6 @@ const PolygonSchema = new Schema({
     Layername:{
         type:String,
         required:[true,'Name Field is Required']
-    }, 
-    name:{
-        type:String,
-        required:[true,'name of point is needed']
     },
     type:{
         type:String,
