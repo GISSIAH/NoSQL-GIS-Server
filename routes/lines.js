@@ -39,7 +39,7 @@ api.get('/all/:name',(req,res,next)=>{
 });
 
 api.post('/entry',(req,res,next)=>{
-    ln .insertMany(req.body.features).then((fts)=>{
+    ln.insertMany(req.body.features).then((fts)=>{
         res.send(fts);
     }).catch(next);
 });
