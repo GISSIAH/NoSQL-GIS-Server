@@ -38,11 +38,16 @@ api.get('/all/:name',(req,res,next)=>{
 });
 
 api.post('/entry',(req,res,next)=>{
-    ply.insertMany(req.body.features).then((fts)=>{
+    var new_fts = [];
+    req.body.features.forEach(element => {
+        var ft = {"Layername":req.body.name,"type":"Feature","properties":element.properties,"geometry":element.geometry};
+        new_fts.push(ft);
+    });
+
+    ply.insertMany(new_fts).then((fts)=>{
         res.send(fts);
     }).catch(next);
 });
- 
 
 
 
