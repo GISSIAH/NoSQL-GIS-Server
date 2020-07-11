@@ -18,7 +18,7 @@ mongoose.Promise = global.Promise;
 
 //whole lotta middle ware and controllers
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'50mb'}));
 app.use('/pnt',api);
 app.use('/ln',ln);
 app.use('/ply',ply); 
