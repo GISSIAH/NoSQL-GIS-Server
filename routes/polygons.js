@@ -24,6 +24,11 @@ api.get('/all/:layer',(req,res,next)=>{
             res.send(coll);
     });
 });
+api.get('/layers',(req,res,next)=>{
+    ply.distinct('Layername').then((lys)=>{
+        res.send(lys);
+    });
+});
 
 api.get('/all/:name',(req,res,next)=>{
     ply.find({name:req.params.name}).then((pt)=>{
