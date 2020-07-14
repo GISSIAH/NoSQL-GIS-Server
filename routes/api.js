@@ -26,6 +26,15 @@ api.get('/all/:layer',(req,res,next)=>{
     });
 });
 
+api.get('/layers',(req,res,next)=>{
+    pt.distinct('Layername').then((lys)=>{
+        res.send(lys);
+    });
+});
+
+
+
+
 api.get('/all/:name',(req,res,next)=>{
     pt.find({name:req.params.name}).then((pt)=>{
         var coll ={
@@ -40,7 +49,7 @@ api.get('/all/:name',(req,res,next)=>{
  
 api.post('/entry',(req,res,next)=>{
     var new_fts = [];
-    req.body.features.forEach(element => {
+    req.body.features.fokrEach(element => {
         var ft = {"Layername":req.body.name,"type":"Feature","properties":element.properties,"geometry":element.geometry};
         new_fts.push(ft);
     });
