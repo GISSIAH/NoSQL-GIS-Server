@@ -59,6 +59,13 @@ api.post('/entry',(req,res,next)=>{
     }).catch(next);
 });
 
+api.delete('/all/:layer',(req,res,next)=>{
+    pt.deleteMany({Layername:req.params.layer}).then((err,ress)=>{
+        res.send(`Layer ${req.params.layer} has been Deleted`);
+    });
+});
+
+
 
 
 
